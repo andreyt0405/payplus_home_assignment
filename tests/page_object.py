@@ -9,7 +9,7 @@ class PageObject:
     def __init__(self, driver):
         self.driver = driver
 
-    def wait_for_element(self, by, value, timeout=10):
+    def wait_for_element(self, by, value, timeout=20):
         """ Wait for an element to be present in the DOM. """
         return WebDriverWait(self.driver, timeout).until(
             EC.presence_of_element_located((by, value))
@@ -28,9 +28,9 @@ class PageObject:
         element.clear()
         element.send_keys(keys)
 
-    def scroll_to_element(self, by, value):
+    def scroll_to_element(self, by, value, timeout=20):
         """ Scroll to an element and return it. """
-        element = WebDriverWait(self.driver, 20).until(
+        element = WebDriverWait(self.driver, timeout).until(
             EC.presence_of_element_located((by, value))
         )
         actions = ActionChains(self.driver)

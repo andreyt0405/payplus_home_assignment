@@ -4,7 +4,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-from tests.PageObjectModel import PageObject
+from tests.page_object import PageObject
 
 # Configure logging
 # Configure logging
@@ -33,7 +33,7 @@ def driver():
     chrome_options.add_argument("--start-maximized")  # Start browser maximized
 
     driver = webdriver.Chrome(options=chrome_options)
-    driver.implicitly_wait(10)
+    driver.implicitly_wait(20)
 
     yield driver  # This provides the WebDriver instance to your tests
     logger.info("WebDriver quit")
